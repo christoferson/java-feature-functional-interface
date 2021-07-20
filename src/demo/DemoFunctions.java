@@ -1,6 +1,7 @@
 package demo;
 
 import java.util.function.Function;
+import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
 public class DemoFunctions {
@@ -13,4 +14,9 @@ public class DemoFunctions {
 	public static void functions(Function<Integer, String> function, Integer in) {
 		System.out.println(function.apply(in));
 	}
+
+	public static void functions(IntFunction<String> function, int in) {
+		System.out.println(function.apply(in));
+	}
+	
 }

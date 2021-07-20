@@ -1,18 +1,11 @@
 package demo;
 
 import java.util.function.Function;
+import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
 import demo.interfaces.DemoFunctionalInterface;
 
-
-// Predicate<T> // boolean test(T t);
-// Function<T, R> // R apply(T t);
-// Function
-// ToIntFunction / ToLongFunction / ToDoubleFunction
-// IntFunction
-// BinaryOperator
-// 
 public class TryFunctionalInterface {
 
 	public static void main(String[] args) {
@@ -20,6 +13,8 @@ public class TryFunctionalInterface {
 		tryInterfacePredicate();
 		
 		tryInterfaceFunction();
+		
+		tryInterfaceIntFunction();
 
 		tryInterfaceCustom();
 
@@ -45,6 +40,13 @@ public class TryFunctionalInterface {
 		DemoFunctions.functions(function, 78);
 	}
 	
+	private static void tryInterfaceIntFunction() {
+		
+		System.out.println("******* TryInterfaceIntFunction *******");
+		
+		IntFunction<String> function = num -> String.format("[%s]", num);
+		DemoFunctions.functions(function, 78);
+	}
 	
 	private static void tryInterfaceCustom() {
 		
