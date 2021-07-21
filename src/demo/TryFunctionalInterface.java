@@ -1,8 +1,10 @@
 package demo;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
+import java.util.function.ToIntBiFunction;
 import java.util.function.ToIntFunction;
 
 import demo.interfaces.DemoFunctionalInterface;
@@ -19,6 +21,10 @@ public class TryFunctionalInterface {
 		
 		tryInterfaceToIntFunction();
 
+		tryInterfaceBiFunction();
+		
+		tryInterfaceToIntBiFunction();
+		
 		tryInterfaceCustom();
 
 	}
@@ -57,6 +63,22 @@ public class TryFunctionalInterface {
 		
 		ToIntFunction<String> function = str -> Integer.valueOf(str) + 2;
 		DemoFunctions.functions(function, "78");
+	}
+
+	private static void tryInterfaceBiFunction() {
+		
+		System.out.println("******* TryInterfaceBiFunction *******");
+		
+		BiFunction<Integer, Integer, Long> function = (in1, in2) ->  Long.valueOf(in1 * in2);
+		DemoFunctions.functions(function, 21, 17);
+	}
+
+	private static void tryInterfaceToIntBiFunction() {
+		
+		System.out.println("******* TryInterfaceToIntBiFunction *******");
+		
+		ToIntBiFunction<Integer, Integer> function = (in1, in2) ->  Integer.valueOf(in1 * in2);
+		DemoFunctions.functions(function, 78, 12);
 	}
 	
 	private static void tryInterfaceCustom() {
