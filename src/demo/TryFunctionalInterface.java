@@ -1,11 +1,13 @@
 package demo;
 
+import java.math.BigDecimal;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.function.ToIntBiFunction;
 import java.util.function.ToIntFunction;
+import java.util.function.UnaryOperator;
 
 import demo.interfaces.DemoFunctionalInterface;
 
@@ -13,17 +15,19 @@ public class TryFunctionalInterface {
 
 	public static void main(String[] args) {
 		
-		tryInterfacePredicate();
+		tryInterfacePredicate(); // Predicate<T> | boolean test(T t);
 		
-		tryInterfaceFunction();
+		tryInterfaceFunction(); // Function<T, R> | R apply(T t);
 		
-		tryInterfaceIntFunction();
+		tryInterfaceIntFunction(); // IntFunction<R> | R apply(int value);
 		
-		tryInterfaceToIntFunction();
+		tryInterfaceToIntFunction(); // ToIntFunction<T> | int applyAsInt(T value);
 
 		tryInterfaceBiFunction();
 		
 		tryInterfaceToIntBiFunction();
+		
+		tryInterfaceUnaryOperator();
 		
 		tryInterfaceCustom();
 
@@ -79,6 +83,15 @@ public class TryFunctionalInterface {
 		
 		ToIntBiFunction<Integer, Integer> function = (in1, in2) ->  Integer.valueOf(in1 * in2);
 		DemoFunctions.functions(function, 78, 12);
+	}
+	
+	
+	private static void tryInterfaceUnaryOperator() {
+		
+		System.out.println("******* TryInterfaceUnaryOperator *******");
+
+		UnaryOperator<BigDecimal> operator = (dec) ->  dec.add(BigDecimal.valueOf(3));
+		DemoFunctions.operator(operator, BigDecimal.valueOf(82));
 	}
 	
 	private static void tryInterfaceCustom() {

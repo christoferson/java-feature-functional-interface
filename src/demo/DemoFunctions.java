@@ -1,18 +1,19 @@
 package demo;
 
+import java.math.BigDecimal;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.function.ToIntBiFunction;
 import java.util.function.ToIntFunction;
+import java.util.function.UnaryOperator;
 
 public class DemoFunctions {
 
 	public static void predicate(Predicate<String> predicate, String target) {
 		System.out.println(predicate.test(target));
 	}
-	
 
 	public static void functions(Function<Integer, String> function, Integer in) {
 		System.out.println(function.apply(in));
@@ -34,4 +35,8 @@ public class DemoFunctions {
 		System.out.println(function.applyAsInt(in1, in2));
 	}
 
+
+	public static void operator(UnaryOperator<BigDecimal> operator, BigDecimal num) {
+		System.out.println(operator.apply(num));
+	}
 }
