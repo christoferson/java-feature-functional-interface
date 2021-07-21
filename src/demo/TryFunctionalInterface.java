@@ -3,6 +3,7 @@ package demo;
 import java.math.BigDecimal;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
 import java.util.function.BinaryOperator;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
@@ -39,6 +40,8 @@ public class TryFunctionalInterface {
 		
 		tryInterfacePredicateOthers();
 		
+		tryInterfaceBiPredicate();
+		
 		tryInterfaceFunction(); // Function<T, R> | R apply(T t);
 		
 		tryInterfaceIntFunction(); // IntFunction<R> | R apply(int value);
@@ -59,7 +62,7 @@ public class TryFunctionalInterface {
 		
 		tryInterfaceSupplier(); // Supplier<T> | T get();
 		
-		tryInterfaceSupplierPrimitives();
+		tryInterfaceSupplierOthers();
 		
 		tryInterfaceConsumer(); // Consumer<T> | void accept(T t);
 		
@@ -99,6 +102,15 @@ public class TryFunctionalInterface {
 		System.out.println("DoublePredicate: " + dpredicate.test(5.2));
 		
 		System.out.println();
+	}
+	
+	private static void tryInterfaceBiPredicate() {
+		
+		System.out.println("******* TryInterfaceBiPredicate *******");
+		
+		BiPredicate<String, Integer> bipredicate = (str, num) -> Integer.valueOf(str) > num;
+		System.out.println("BiPredicate: " + bipredicate.test("28", 27));
+
 	}
 	
 	private static void tryInterfaceFunction() {
@@ -186,9 +198,9 @@ public class TryFunctionalInterface {
 		System.out.println(classSupplier.get());
 	}
 	
-	private static void tryInterfaceSupplierPrimitives() {
+	private static void tryInterfaceSupplierOthers() {
 		
-		System.out.println("******* TryInterfaceSupplierPrimitives *******");
+		System.out.println("******* TryInterfaceSupplierOthers *******");
 
 		IntSupplier isupplier = () ->  817; // int getAsInt();
 		System.out.println("IntSupplier: " + isupplier.getAsInt());
