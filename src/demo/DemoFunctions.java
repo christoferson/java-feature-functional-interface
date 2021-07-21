@@ -1,8 +1,10 @@
 package demo;
 
 import java.math.BigDecimal;
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
@@ -48,5 +50,13 @@ public class DemoFunctions {
 	
 	public static void supplier(Supplier<BigDecimal> supplier) {
 		System.out.println(supplier.get());
+	}
+	
+	public static void consumer(Consumer<String> consumer, String value) {
+		consumer.accept(value);
+	}
+	
+	public static void consumer(BiConsumer<String, Double> consumer, String str, Double num) {
+		consumer.accept(str, num);
 	}
 }

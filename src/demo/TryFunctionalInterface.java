@@ -1,10 +1,16 @@
 package demo;
 
 import java.math.BigDecimal;
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import java.util.function.DoubleSupplier;
 import java.util.function.Function;
 import java.util.function.IntFunction;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.ToIntBiFunction;
@@ -12,6 +18,7 @@ import java.util.function.ToIntFunction;
 import java.util.function.UnaryOperator;
 
 import demo.interfaces.DemoFunctionalInterface;
+import demo.model.DemoClass;
 
 public class TryFunctionalInterface {
 
@@ -35,6 +42,12 @@ public class TryFunctionalInterface {
 		
 		tryInterfaceSupplier(); // Supplier<T> | T get();
 		
+		tryInterfaceSupplierPrimitives();
+		
+		tryInterfaceConsumer(); // Consumer<T> | void accept(T t);
+		
+		tryInterfaceBiConsumer(); // BiConsumer<T, U> | void accept(T t, U u);
+		
 		tryInterfaceCustom();
 
 	}
@@ -53,9 +66,11 @@ public class TryFunctionalInterface {
 	
 	private static void tryInterfaceFunction() {
 		
-		System.out.println("******* TryInterfacePredicate *******");
+		System.out.println("******* TryInterfaceFunction *******");
 		
 		Function<Integer, String> function = num -> String.format("[%s]", num);
+		function = function.andThen(str -> { return String.format("(%s)", str);} );
+		function = function.andThen(str -> { return String.format("{%s}", str);} );
 		DemoFunctions.functions(function, 78);
 	}
 	
@@ -114,6 +129,45 @@ public class TryFunctionalInterface {
 
 		Supplier<BigDecimal> supplier = () ->  BigDecimal.valueOf(276);
 		DemoFunctions.supplier(supplier);
+
+		Supplier<DemoClass> classSupplier = DemoClass::new;
+		System.out.println(classSupplier.get());
+	}
+	
+	private static void tryInterfaceSupplierPrimitives() {
+		
+		System.out.println("******* TryInterfaceSupplierPrimitives *******");
+
+		IntSupplier isupplier = () ->  817; // int getAsInt();
+		System.out.println("IntSupplier: " + isupplier.getAsInt());
+		
+		LongSupplier lsupplier = () ->  854953; // int getAsInt();
+		System.out.println("LongSupplier: " + lsupplier.getAsLong());
+		
+		DoubleSupplier dsupplier = () ->  78.223; // int getAsInt();
+		System.out.println("DoubleSupplier: " + dsupplier.getAsDouble());
+		
+		BooleanSupplier bsupplier = () ->  false; // int getAsInt();
+		System.out.println("BooleanSupplier: " + bsupplier.getAsBoolean());
+
+	}
+	
+	private static void tryInterfaceConsumer() {
+		
+		System.out.println("******* TryInterfaceConsumer *******");
+
+		Consumer<String> consumer = (val) -> System.out.print(val);
+		consumer = consumer.andThen((val) -> System.out.println(val.toUpperCase()));
+		DemoFunctions.consumer(consumer, "xyz");
+	}
+	
+	private static void tryInterfaceBiConsumer() {
+		
+		System.out.println("******* TryInterfaceBiConsumer *******");
+
+		BiConsumer<String, Double> consumer = (str, num) -> System.out.print(str + (num + 5.7));
+		consumer = consumer.andThen((str, num) -> System.out.println(str.toUpperCase() + num));
+		DemoFunctions.consumer(consumer, "abc", 716d);
 	}
 	
 	private static void tryInterfaceCustom() {
