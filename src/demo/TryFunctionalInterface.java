@@ -3,6 +3,7 @@ package demo;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
 
 import demo.interfaces.DemoFunctionalInterface;
 
@@ -15,6 +16,8 @@ public class TryFunctionalInterface {
 		tryInterfaceFunction();
 		
 		tryInterfaceIntFunction();
+		
+		tryInterfaceToIntFunction();
 
 		tryInterfaceCustom();
 
@@ -46,6 +49,14 @@ public class TryFunctionalInterface {
 		
 		IntFunction<String> function = num -> String.format("[%s]", num);
 		DemoFunctions.functions(function, 78);
+	}
+	
+	private static void tryInterfaceToIntFunction() {
+		
+		System.out.println("******* TryInterfaceToIntFunction *******");
+		
+		ToIntFunction<String> function = str -> Integer.valueOf(str) + 2;
+		DemoFunctions.functions(function, "78");
 	}
 	
 	private static void tryInterfaceCustom() {
