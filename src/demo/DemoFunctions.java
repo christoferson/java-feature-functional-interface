@@ -9,8 +9,10 @@ import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.function.ToDoubleBiFunction;
 import java.util.function.ToIntBiFunction;
 import java.util.function.ToIntFunction;
+import java.util.function.ToLongBiFunction;
 import java.util.function.UnaryOperator;
 
 public class DemoFunctions {
@@ -38,7 +40,14 @@ public class DemoFunctions {
 	public static void functions(ToIntBiFunction<Integer, Integer> function, Integer in1, Integer in2) {
 		System.out.println(function.applyAsInt(in1, in2));
 	}
-
+	
+	public static void bifunctions(ToLongBiFunction<Integer, Integer> function, Integer in1, Integer in2) {
+		System.out.println(function.applyAsLong(in1, in2));
+	}
+	
+	public static void bifunctions(ToDoubleBiFunction<Integer, Integer> function, Integer in1, Integer in2) {
+		System.out.println(function.applyAsDouble(in1, in2));
+	}
 
 	public static void operator(UnaryOperator<BigDecimal> operator, BigDecimal num) {
 		System.out.println(operator.apply(num));

@@ -6,18 +6,26 @@ import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
+import java.util.function.DoubleConsumer;
+import java.util.function.DoublePredicate;
 import java.util.function.DoubleSupplier;
 import java.util.function.Function;
+import java.util.function.IntConsumer;
 import java.util.function.IntFunction;
+import java.util.function.IntPredicate;
 import java.util.function.IntSupplier;
+import java.util.function.LongConsumer;
+import java.util.function.LongPredicate;
 import java.util.function.LongSupplier;
 import java.util.function.ObjDoubleConsumer;
 import java.util.function.ObjIntConsumer;
 import java.util.function.ObjLongConsumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.function.ToDoubleBiFunction;
 import java.util.function.ToIntBiFunction;
 import java.util.function.ToIntFunction;
+import java.util.function.ToLongBiFunction;
 import java.util.function.UnaryOperator;
 
 import demo.interfaces.DemoFunctionalInterface;
@@ -29,6 +37,8 @@ public class TryFunctionalInterface {
 		
 		tryInterfacePredicate(); // Predicate<T> | boolean test(T t);
 		
+		tryInterfacePredicateOthers();
+		
 		tryInterfaceFunction(); // Function<T, R> | R apply(T t);
 		
 		tryInterfaceIntFunction(); // IntFunction<R> | R apply(int value);
@@ -39,6 +49,10 @@ public class TryFunctionalInterface {
 		
 		tryInterfaceToIntBiFunction();
 		
+		tryInterfaceToLongBiFunction();
+		
+		tryInterfaceToDoubleBiFunction();
+		
 		tryInterfaceUnaryOperator();
 		
 		tryInterfaceBinaryOperator(); // BinaryOperator<T> extends BiFunction<T,T,T> | T apply(T t, T u);
@@ -48,6 +62,8 @@ public class TryFunctionalInterface {
 		tryInterfaceSupplierPrimitives();
 		
 		tryInterfaceConsumer(); // Consumer<T> | void accept(T t);
+		
+		tryInterfaceConsumerOthers();
 		
 		tryInterfaceBiConsumer(); // BiConsumer<T, U> | void accept(T t, U u);
 		
@@ -67,6 +83,22 @@ public class TryFunctionalInterface {
 		DemoFunctions.predicate(String::isBlank, "n");
 		DemoFunctions.predicate(str -> str == null || str.isBlank(), "");
 
+	}
+	
+	private static void tryInterfacePredicateOthers() {
+		
+		System.out.println("******* TryInterfacePredicateOthers *******");
+		
+		IntPredicate ipredicate = (num) -> num > 5;
+		System.out.println("IntPredicate: " + ipredicate.test(10));
+
+		LongPredicate lpredicate = (num) -> num >= 50;
+		System.out.println("LongPredicate: " + lpredicate.test(32));
+	
+		DoublePredicate dpredicate = (num) -> num > 5.5;
+		System.out.println("DoublePredicate: " + dpredicate.test(5.2));
+		
+		System.out.println();
 	}
 	
 	private static void tryInterfaceFunction() {
@@ -111,6 +143,21 @@ public class TryFunctionalInterface {
 		DemoFunctions.functions(function, 78, 12);
 	}
 	
+	private static void tryInterfaceToLongBiFunction() {
+		
+		System.out.println("******* TryInterfaceToLongBiFunction *******");
+		
+		ToLongBiFunction<Integer, Integer> function = (in1, in2) ->  Long.valueOf(in1 + in2);
+		DemoFunctions.bifunctions(function, 78, 12);
+	}
+
+	private static void tryInterfaceToDoubleBiFunction() {
+		
+		System.out.println("******* tryInterfaceToDoubleBiFunction *******");
+		
+		ToDoubleBiFunction<Integer, Integer> function = (in1, in2) ->  Double.valueOf(in1 + in2);
+		DemoFunctions.bifunctions(function, 78, 12);
+	}
 	
 	private static void tryInterfaceUnaryOperator() {
 		
@@ -164,6 +211,22 @@ public class TryFunctionalInterface {
 		Consumer<String> consumer = (val) -> System.out.print(val);
 		consumer = consumer.andThen((val) -> System.out.println(val.toUpperCase()));
 		DemoFunctions.consumer(consumer, "xyz");
+	}
+	
+	private static void tryInterfaceConsumerOthers() {
+		
+		System.out.println("******* TryInterfaceConsumerOthers *******");
+
+		IntConsumer iconsumer = (val) -> System.out.println(val + (val+1));
+		iconsumer.accept(398);
+
+		LongConsumer lconsumer = (val) -> System.out.println(val + (val+2));
+		lconsumer.accept(398);
+		
+		DoubleConsumer dconsumer = (val) -> System.out.println(val + (val+0.5));
+		dconsumer.accept(398);
+		
+		System.out.println("");
 	}
 	
 	private static void tryInterfaceBiConsumer() {
