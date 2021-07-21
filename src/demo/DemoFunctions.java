@@ -2,9 +2,11 @@ package demo;
 
 import java.math.BigDecimal;
 import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.function.ToIntBiFunction;
 import java.util.function.ToIntFunction;
 import java.util.function.UnaryOperator;
@@ -38,5 +40,13 @@ public class DemoFunctions {
 
 	public static void operator(UnaryOperator<BigDecimal> operator, BigDecimal num) {
 		System.out.println(operator.apply(num));
+	}
+
+	public static void operator(BinaryOperator<BigDecimal> operator, BigDecimal num1, BigDecimal num2) {
+		System.out.println(operator.apply(num1, num2));
+	}
+	
+	public static void supplier(Supplier<BigDecimal> supplier) {
+		System.out.println(supplier.get());
 	}
 }

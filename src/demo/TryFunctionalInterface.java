@@ -2,9 +2,11 @@ package demo;
 
 import java.math.BigDecimal;
 import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.function.ToIntBiFunction;
 import java.util.function.ToIntFunction;
 import java.util.function.UnaryOperator;
@@ -23,11 +25,15 @@ public class TryFunctionalInterface {
 		
 		tryInterfaceToIntFunction(); // ToIntFunction<T> | int applyAsInt(T value);
 
-		tryInterfaceBiFunction();
+		tryInterfaceBiFunction(); // BiFunction<T, U, R> | R apply(T t, U u);
 		
 		tryInterfaceToIntBiFunction();
 		
 		tryInterfaceUnaryOperator();
+		
+		tryInterfaceBinaryOperator(); // BinaryOperator<T> extends BiFunction<T,T,T> | T apply(T t, T u);
+		
+		tryInterfaceSupplier(); // Supplier<T> | T get();
 		
 		tryInterfaceCustom();
 
@@ -92,6 +98,22 @@ public class TryFunctionalInterface {
 
 		UnaryOperator<BigDecimal> operator = (dec) ->  dec.add(BigDecimal.valueOf(3));
 		DemoFunctions.operator(operator, BigDecimal.valueOf(82));
+	}
+	
+	private static void tryInterfaceBinaryOperator() {
+		
+		System.out.println("******* TryInterfaceBinaryOperator *******");
+
+		BinaryOperator<BigDecimal> operator = (dec1, dec2) ->  dec1.add(dec2);
+		DemoFunctions.operator(operator, BigDecimal.valueOf(82), BigDecimal.valueOf(71));
+	}
+	
+	private static void tryInterfaceSupplier() {
+		
+		System.out.println("******* TryInterfaceSupplier *******");
+
+		Supplier<BigDecimal> supplier = () ->  BigDecimal.valueOf(276);
+		DemoFunctions.supplier(supplier);
 	}
 	
 	private static void tryInterfaceCustom() {
