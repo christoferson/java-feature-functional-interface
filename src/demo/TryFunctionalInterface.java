@@ -11,6 +11,9 @@ import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.IntSupplier;
 import java.util.function.LongSupplier;
+import java.util.function.ObjDoubleConsumer;
+import java.util.function.ObjIntConsumer;
+import java.util.function.ObjLongConsumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.ToIntBiFunction;
@@ -47,6 +50,8 @@ public class TryFunctionalInterface {
 		tryInterfaceConsumer(); // Consumer<T> | void accept(T t);
 		
 		tryInterfaceBiConsumer(); // BiConsumer<T, U> | void accept(T t, U u);
+		
+		tryInterfaceBiConsumerOthers();
 		
 		tryInterfaceCustom();
 
@@ -141,13 +146,13 @@ public class TryFunctionalInterface {
 		IntSupplier isupplier = () ->  817; // int getAsInt();
 		System.out.println("IntSupplier: " + isupplier.getAsInt());
 		
-		LongSupplier lsupplier = () ->  854953; // int getAsInt();
+		LongSupplier lsupplier = () ->  854953; // long getAsLong();
 		System.out.println("LongSupplier: " + lsupplier.getAsLong());
 		
-		DoubleSupplier dsupplier = () ->  78.223; // int getAsInt();
+		DoubleSupplier dsupplier = () ->  78.223; // double getAsDouble();
 		System.out.println("DoubleSupplier: " + dsupplier.getAsDouble());
 		
-		BooleanSupplier bsupplier = () ->  false; // int getAsInt();
+		BooleanSupplier bsupplier = () ->  false; // boolean getAsBoolean();
 		System.out.println("BooleanSupplier: " + bsupplier.getAsBoolean());
 
 	}
@@ -168,6 +173,23 @@ public class TryFunctionalInterface {
 		BiConsumer<String, Double> consumer = (str, num) -> System.out.print(str + (num + 5.7));
 		consumer = consumer.andThen((str, num) -> System.out.println(str.toUpperCase() + num));
 		DemoFunctions.consumer(consumer, "abc", 716d);
+	}
+	
+	private static void tryInterfaceBiConsumerOthers() {
+		
+		System.out.println("******* TryInterfaceBiConsumerOthers *******");
+
+		ObjIntConsumer<String> oiconsumer = (str, num) -> System.out.println(String.format("Object=%s int=%s", str, num)); // void accept(T t, int value);
+		oiconsumer.accept("stringobject", 928);
+		
+		ObjLongConsumer<String> olconsumer = (str, num) -> System.out.println(String.format("Object=%s long=%s", str, num)); // void accept(T t, long value);
+		olconsumer.accept("stringobject", 87363);
+		
+		ObjDoubleConsumer<String> odconsumer = (str, num) -> System.out.println(String.format("Object=%s double=%s", str, num)); // void accept(T t, double value);
+		odconsumer.accept("stringobject", 837.23);
+		
+		System.out.println();
+
 	}
 	
 	private static void tryInterfaceCustom() {
