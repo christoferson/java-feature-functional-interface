@@ -24,6 +24,7 @@ import java.util.function.ObjLongConsumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.ToDoubleBiFunction;
+import java.util.function.ToDoubleFunction;
 import java.util.function.ToIntBiFunction;
 import java.util.function.ToIntFunction;
 import java.util.function.ToLongBiFunction;
@@ -146,8 +147,12 @@ public class TryFunctionalInterface {
 		
 		System.out.println("******* TryInterfaceToFunctionOthers *******");
 		
-		ToLongFunction<String> function = num -> Long.valueOf(num);
-		DemoFunctions.functions(function, "78");
+		ToLongFunction<String> lfunction = num -> Long.valueOf(num);
+		DemoFunctions.functions(lfunction, "78");
+		
+		ToDoubleFunction<String> dfunction = num -> Double.valueOf(num);
+		DemoFunctions.functions(dfunction, "78.56");
+		
 	}
 
 	private static void tryInterfaceBiFunction() {

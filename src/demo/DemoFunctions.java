@@ -10,6 +10,7 @@ import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.ToDoubleBiFunction;
+import java.util.function.ToDoubleFunction;
 import java.util.function.ToIntBiFunction;
 import java.util.function.ToIntFunction;
 import java.util.function.ToLongBiFunction;
@@ -37,6 +38,10 @@ public class DemoFunctions {
 	public static void functions(ToLongFunction<String> function, String in) {
 		System.out.println(function.applyAsLong(in));
 	}
+
+	public static void functions(ToDoubleFunction<String> function, String in) {
+		System.out.println(function.applyAsDouble(in));
+	}	
 	
 	public static void functions(BiFunction<Integer, Integer, Long> function, Integer in1, Integer in2) {
 		System.out.println(function.apply(in1, in2));
