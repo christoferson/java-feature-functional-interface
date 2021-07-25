@@ -15,6 +15,8 @@ import java.util.function.IntConsumer;
 import java.util.function.IntFunction;
 import java.util.function.IntPredicate;
 import java.util.function.IntSupplier;
+import java.util.function.IntToDoubleFunction;
+import java.util.function.IntToLongFunction;
 import java.util.function.LongConsumer;
 import java.util.function.LongPredicate;
 import java.util.function.LongSupplier;
@@ -127,12 +129,22 @@ public class TryFunctionalInterface {
 		DemoFunctions.functions(function, 78);
 	}
 	
+	
 	private static void tryInterfaceIntFunction() {
 		
 		System.out.println("******* TryInterfaceIntFunction *******");
 		
+		// int to Object
 		IntFunction<String> function = num -> String.format("[%s]", num);
 		DemoFunctions.functions(function, 78);
+		
+		// int to long
+		IntToLongFunction i2lfunction = num -> Long.valueOf(num);
+		DemoFunctions.functions(i2lfunction, 56);
+		
+		// int to double
+		IntToDoubleFunction i2dfunction = num -> Double.valueOf(num+0.75);
+		DemoFunctions.functions(i2dfunction, 56);
 	}
 	
 	private static void tryInterfaceToIntFunction() {
