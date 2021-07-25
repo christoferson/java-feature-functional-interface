@@ -27,6 +27,7 @@ import java.util.function.ToDoubleBiFunction;
 import java.util.function.ToIntBiFunction;
 import java.util.function.ToIntFunction;
 import java.util.function.ToLongBiFunction;
+import java.util.function.ToLongFunction;
 import java.util.function.UnaryOperator;
 
 import demo.interfaces.DemoFunctionalInterface;
@@ -48,6 +49,8 @@ public class TryFunctionalInterface {
 		
 		tryInterfaceToIntFunction(); // ToIntFunction<T> | int applyAsInt(T value);
 
+		tryInterfaceToFunctionOthers();
+		
 		tryInterfaceBiFunction(); // BiFunction<T, U, R> | R apply(T t, U u);
 		
 		tryInterfaceToIntBiFunction();
@@ -136,6 +139,14 @@ public class TryFunctionalInterface {
 		System.out.println("******* TryInterfaceToIntFunction *******");
 		
 		ToIntFunction<String> function = str -> Integer.valueOf(str) + 2;
+		DemoFunctions.functions(function, "78");
+	}
+	
+	private static void tryInterfaceToFunctionOthers() {
+		
+		System.out.println("******* TryInterfaceToFunctionOthers *******");
+		
+		ToLongFunction<String> function = num -> Long.valueOf(num);
 		DemoFunctions.functions(function, "78");
 	}
 

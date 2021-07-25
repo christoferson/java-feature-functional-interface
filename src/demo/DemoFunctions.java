@@ -13,6 +13,7 @@ import java.util.function.ToDoubleBiFunction;
 import java.util.function.ToIntBiFunction;
 import java.util.function.ToIntFunction;
 import java.util.function.ToLongBiFunction;
+import java.util.function.ToLongFunction;
 import java.util.function.UnaryOperator;
 
 public class DemoFunctions {
@@ -33,6 +34,10 @@ public class DemoFunctions {
 		System.out.println(function.applyAsInt(in));
 	}
 
+	public static void functions(ToLongFunction<String> function, String in) {
+		System.out.println(function.applyAsLong(in));
+	}
+	
 	public static void functions(BiFunction<Integer, Integer, Long> function, Integer in1, Integer in2) {
 		System.out.println(function.apply(in1, in2));
 	}
