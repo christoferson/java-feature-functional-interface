@@ -9,6 +9,9 @@ import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.IntToDoubleFunction;
 import java.util.function.IntToLongFunction;
+import java.util.function.LongFunction;
+import java.util.function.LongToDoubleFunction;
+import java.util.function.LongToIntFunction;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.ToDoubleBiFunction;
@@ -32,16 +35,31 @@ public class DemoFunctions {
 	public static void functions(IntFunction<String> function, int in) {
 		System.out.println(function.apply(in));
 	}
+	
 	public static void functions(IntToLongFunction function, int in) {
 		System.out.println(function.applyAsLong(in));
 	}
+	
 	public static void functions(IntToDoubleFunction function, int in) {
 		System.out.println(function.applyAsDouble(in));
 	}
+	
 	public static void functions(ToIntFunction<String> function, String in) {
 		System.out.println(function.applyAsInt(in));
 	}
+	
+	public static void functions(LongFunction<String> function, long in) {
+		System.out.println(function.apply(in));
+	}
 
+	public static void functions(LongToIntFunction function, long in) {
+		System.out.println(function.applyAsInt(in));
+	}
+	
+	public static void functions(LongToDoubleFunction function, long in) {
+		System.out.println(function.applyAsDouble(in));
+	}
+	
 	public static void functions(ToLongFunction<String> function, String in) {
 		System.out.println(function.applyAsLong(in));
 	}

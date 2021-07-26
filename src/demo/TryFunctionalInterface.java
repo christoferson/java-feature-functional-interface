@@ -18,8 +18,11 @@ import java.util.function.IntSupplier;
 import java.util.function.IntToDoubleFunction;
 import java.util.function.IntToLongFunction;
 import java.util.function.LongConsumer;
+import java.util.function.LongFunction;
 import java.util.function.LongPredicate;
 import java.util.function.LongSupplier;
+import java.util.function.LongToDoubleFunction;
+import java.util.function.LongToIntFunction;
 import java.util.function.ObjDoubleConsumer;
 import java.util.function.ObjIntConsumer;
 import java.util.function.ObjLongConsumer;
@@ -53,6 +56,8 @@ public class TryFunctionalInterface {
 		tryInterfaceToIntFunction(); // ToIntFunction<T> | int applyAsInt(T value);
 
 		tryInterfaceToFunctionOthers();
+		
+		tryInterfaceLongFunction();
 		
 		tryInterfaceBiFunction(); // BiFunction<T, U, R> | R apply(T t, U u);
 		
@@ -145,6 +150,24 @@ public class TryFunctionalInterface {
 		// int to double
 		IntToDoubleFunction i2dfunction = num -> Double.valueOf(num+0.75);
 		DemoFunctions.functions(i2dfunction, 56);
+	}
+	
+	private static void tryInterfaceLongFunction() {
+		
+		System.out.println("******* TryInterfaceLongFunction *******");
+		
+		// long to Object
+		LongFunction<String> function = num -> String.format("[%s]", num);
+		DemoFunctions.functions(function, 373902);
+		
+		// long to int
+		LongToIntFunction l2ifunction = num -> Long.valueOf(num).intValue();
+		DemoFunctions.functions(l2ifunction, 535l);
+		
+		// long to double
+		LongToDoubleFunction l2dfunction = num -> Double.valueOf(num+0.75);
+		DemoFunctions.functions(l2dfunction, 793l);
+
 	}
 	
 	private static void tryInterfaceToIntFunction() {
