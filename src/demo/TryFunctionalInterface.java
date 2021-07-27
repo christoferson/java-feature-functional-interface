@@ -41,6 +41,7 @@ import java.util.function.UnaryOperator;
 
 import demo.interfaces.DemoFunctionalInterface;
 import demo.model.DemoClass;
+import demo.utils.DemoFunctions;
 
 public class TryFunctionalInterface {
 
