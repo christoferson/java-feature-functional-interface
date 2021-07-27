@@ -180,17 +180,17 @@ public class TryFunctionalInterface {
 		
 		System.out.println("******* TryInterfaceDoubleFunction *******");
 		
-		// long to Object
+		// double to Object
 		DoubleFunction<String> function = num -> String.format("[%s]", num);
 		DemoFunctions.functions(function, 1028d);
 		
-		// long to int
-		//DoubleToIntFunction l2ifunction = num -> Long.valueOf(num).intValue();
-		//DemoFunctions.functions(l2ifunction, 535l);
+		// double to int
+		DoubleToIntFunction d2ifunction = num -> Double.valueOf(num).intValue();
+		DemoFunctions.functions(d2ifunction, 735.78);
 		
-		// long to double
-		//DoubleToLongFunction l2dfunction = num -> Double.valueOf(num+0.75);
-		//DemoFunctions.functions(l2dfunction, 793l);
+		// double to long
+		DoubleToLongFunction d2lfunction = num -> Double.valueOf(num).longValue();
+		DemoFunctions.functions(d2lfunction, 9287.289);
 
 	}
 	

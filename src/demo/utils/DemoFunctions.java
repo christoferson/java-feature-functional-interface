@@ -6,6 +6,8 @@ import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.DoubleFunction;
+import java.util.function.DoubleToIntFunction;
+import java.util.function.DoubleToLongFunction;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.IntToDoubleFunction;
@@ -63,6 +65,14 @@ public class DemoFunctions {
 	
 	public static void functions(DoubleFunction<String> function, double in) {
 		System.out.println(function.apply(in));
+	}
+	
+	public static void functions(DoubleToIntFunction function, double in) {
+		System.out.println(function.applyAsInt(in));
+	}
+	
+	public static void functions(DoubleToLongFunction function, double in) {
+		System.out.println(function.applyAsLong(in));
 	}
 	
 	public static void functions(ToLongFunction<String> function, String in) {
