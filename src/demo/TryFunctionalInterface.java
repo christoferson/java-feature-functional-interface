@@ -98,6 +98,7 @@ public class TryFunctionalInterface {
 		
 		System.out.println("******* TryInterfacePredicate *******");
 		
+		// Predicate<T> | boolean test(T t);
 		Predicate<String> predicate = String::isEmpty;
 		DemoFunctions.predicate(predicate, "");
 		DemoFunctions.predicate(String::isBlank, "n");
@@ -109,35 +110,44 @@ public class TryFunctionalInterface {
 		
 		System.out.println("******* TryInterfacePredicateOthers *******");
 		
+		// boolean test(int value);
 		IntPredicate ipredicate = (num) -> num > 5;
 		System.out.println("IntPredicate: " + ipredicate.test(10));
 
+		// boolean test(long value);
 		LongPredicate lpredicate = (num) -> num >= 50;
 		System.out.println("LongPredicate: " + lpredicate.test(32));
 	
+		// boolean test(double value);
 		DoublePredicate dpredicate = (num) -> num > 5.5;
 		System.out.println("DoublePredicate: " + dpredicate.test(5.2));
 		
 		System.out.println();
+
 	}
 	
 	private static void tryInterfaceBiPredicate() {
 		
 		System.out.println("******* TryInterfaceBiPredicate *******");
 		
+		// BiPredicate<T, U> | boolean test(T t, U u);
 		BiPredicate<String, Integer> bipredicate = (str, num) -> Integer.valueOf(str) > num;
 		System.out.println("BiPredicate: " + bipredicate.test("28", 27));
 
+		DemoFunctions.bipredicate((n1, n2) -> n1 >= n2, 57, 98);
+		
 	}
 	
 	private static void tryInterfaceFunction() {
 		
 		System.out.println("******* TryInterfaceFunction *******");
 		
+		// Function<T, R> | R apply(T t);
 		Function<Integer, String> function = num -> String.format("[%s]", num);
 		function = function.andThen(str -> { return String.format("(%s)", str);} );
 		function = function.andThen(str -> { return String.format("{%s}", str);} );
 		DemoFunctions.functions(function, 78);
+
 	}
 	
 	

@@ -3,6 +3,7 @@ package demo.utils;
 import java.math.BigDecimal;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.DoubleFunction;
@@ -30,7 +31,11 @@ public class DemoFunctions {
 	public static void predicate(Predicate<String> predicate, String target) {
 		System.out.println(predicate.test(target));
 	}
-
+	 
+	public static <U, V> void bipredicate(BiPredicate<U, V> predicate, U v1, V v2) {
+		System.out.println(predicate.test(v1, v2));
+	}
+	
 	public static void functions(Function<Integer, String> function, Integer in) {
 		System.out.println(function.apply(in));
 	}
