@@ -5,6 +5,7 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
+import java.util.function.DoubleFunction;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.IntToDoubleFunction;
@@ -58,6 +59,10 @@ public class DemoFunctions {
 	
 	public static void functions(LongToDoubleFunction function, long in) {
 		System.out.println(function.applyAsDouble(in));
+	}
+	
+	public static void functions(DoubleFunction<String> function, double in) {
+		System.out.println(function.apply(in));
 	}
 	
 	public static void functions(ToLongFunction<String> function, String in) {

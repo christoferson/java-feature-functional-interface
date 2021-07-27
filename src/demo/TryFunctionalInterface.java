@@ -8,8 +8,11 @@ import java.util.function.BinaryOperator;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import java.util.function.DoubleConsumer;
+import java.util.function.DoubleFunction;
 import java.util.function.DoublePredicate;
 import java.util.function.DoubleSupplier;
+import java.util.function.DoubleToIntFunction;
+import java.util.function.DoubleToLongFunction;
 import java.util.function.Function;
 import java.util.function.IntConsumer;
 import java.util.function.IntFunction;
@@ -58,6 +61,8 @@ public class TryFunctionalInterface {
 		tryInterfaceToFunctionOthers();
 		
 		tryInterfaceLongFunction();
+		
+		tryInterfaceDoubleFunction();
 		
 		tryInterfaceBiFunction(); // BiFunction<T, U, R> | R apply(T t, U u);
 		
@@ -167,6 +172,24 @@ public class TryFunctionalInterface {
 		// long to double
 		LongToDoubleFunction l2dfunction = num -> Double.valueOf(num+0.75);
 		DemoFunctions.functions(l2dfunction, 793l);
+
+	}
+	
+	private static void tryInterfaceDoubleFunction() {
+		
+		System.out.println("******* TryInterfaceDoubleFunction *******");
+		
+		// long to Object
+		DoubleFunction<String> function = num -> String.format("[%s]", num);
+		DemoFunctions.functions(function, 1028d);
+		
+		// long to int
+		//DoubleToIntFunction l2ifunction = num -> Long.valueOf(num).intValue();
+		//DemoFunctions.functions(l2ifunction, 535l);
+		
+		// long to double
+		//DoubleToLongFunction l2dfunction = num -> Double.valueOf(num+0.75);
+		//DemoFunctions.functions(l2dfunction, 793l);
 
 	}
 	
