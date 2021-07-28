@@ -9,6 +9,7 @@ import java.util.function.Consumer;
 import java.util.function.DoubleFunction;
 import java.util.function.DoubleToIntFunction;
 import java.util.function.DoubleToLongFunction;
+import java.util.function.DoubleUnaryOperator;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.IntToDoubleFunction;
@@ -116,6 +117,10 @@ public class DemoFunctions {
 
 	public static void operator(LongUnaryOperator operator, long num) {
 		System.out.println(operator.applyAsLong(num));
+	}
+	
+	public static void operator(DoubleUnaryOperator operator, double num) {
+		System.out.println(operator.applyAsDouble(num));
 	}
 	
 	public static void operator(BinaryOperator<BigDecimal> operator, BigDecimal num1, BigDecimal num2) {

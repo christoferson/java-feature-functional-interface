@@ -13,6 +13,7 @@ import java.util.function.DoublePredicate;
 import java.util.function.DoubleSupplier;
 import java.util.function.DoubleToIntFunction;
 import java.util.function.DoubleToLongFunction;
+import java.util.function.DoubleUnaryOperator;
 import java.util.function.Function;
 import java.util.function.IntConsumer;
 import java.util.function.IntFunction;
@@ -271,7 +272,9 @@ public class TryFunctionalInterface {
 		
 		LongUnaryOperator loperator = l -> l + 5;
 		DemoFunctions.operator(loperator, 125);
-		//DoubleUnaryOperator
+		
+		DoubleUnaryOperator doperator = d -> d + 0.5;
+		DemoFunctions.operator(doperator, 15.25);
 		
 	}
 	
