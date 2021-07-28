@@ -107,8 +107,9 @@ public class DemoFunctions {
 		System.out.println(function.applyAsDouble(in1, in2));
 	}
 
-	public static void operator(UnaryOperator<BigDecimal> operator, BigDecimal num) {
-		System.out.println(operator.apply(num));
+	public static <T> void operator(UnaryOperator<T> operator, T num) {
+		T result = operator.apply(num);
+		System.out.println(result);
 	}
 	
 	public static void operator(IntUnaryOperator operator, int num) {
@@ -123,8 +124,9 @@ public class DemoFunctions {
 		System.out.println(operator.applyAsDouble(num));
 	}
 	
-	public static void operator(BinaryOperator<BigDecimal> operator, BigDecimal num1, BigDecimal num2) {
-		System.out.println(operator.apply(num1, num2));
+	public static <T> void BinaryOperator(BinaryOperator<T> operator, T num1, T num2) {
+		T result = operator.apply(num1, num2);
+		System.out.println(result);
 	}
 	
 	public static void supplier(Supplier<BigDecimal> supplier) {

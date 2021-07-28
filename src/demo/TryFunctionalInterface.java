@@ -282,8 +282,9 @@ public class TryFunctionalInterface {
 		
 		System.out.println("******* TryInterfaceBinaryOperator *******");
 
+		// BinaryOperator<T> extends BiFunction<T,T,T>
 		BinaryOperator<BigDecimal> operator = (dec1, dec2) ->  dec1.add(dec2);
-		DemoFunctions.operator(operator, BigDecimal.valueOf(82), BigDecimal.valueOf(71));
+		DemoFunctions.BinaryOperator(operator, BigDecimal.valueOf(82), BigDecimal.valueOf(71));
 	
 		//IntBinaryOperator
 		//LongBinaryOperator
