@@ -20,6 +20,7 @@ import java.util.function.IntPredicate;
 import java.util.function.IntSupplier;
 import java.util.function.IntToDoubleFunction;
 import java.util.function.IntToLongFunction;
+import java.util.function.IntUnaryOperator;
 import java.util.function.LongConsumer;
 import java.util.function.LongFunction;
 import java.util.function.LongPredicate;
@@ -155,7 +156,7 @@ public class TryFunctionalInterface {
 		
 		System.out.println("******* TryInterfaceIntFunction *******");
 		
-		// int to Object
+		// int to Object  IntFunction<R> | R apply(int value);
 		IntFunction<String> function = num -> String.format("[%s]", num);
 		DemoFunctions.functions(function, 78);
 		
@@ -262,6 +263,14 @@ public class TryFunctionalInterface {
 
 		UnaryOperator<BigDecimal> operator = (dec) ->  dec.add(BigDecimal.valueOf(3));
 		DemoFunctions.operator(operator, BigDecimal.valueOf(82));
+		
+		//IntUnaryOperator // int applyAsInt(int operand);
+		IntUnaryOperator ioperator = i -> i + 1;
+		DemoFunctions.operator(ioperator, 76);
+		
+		//LongUnaryOperator
+		//DoubleUnaryOperator
+		
 	}
 	
 	private static void tryInterfaceBinaryOperator() {
@@ -270,6 +279,11 @@ public class TryFunctionalInterface {
 
 		BinaryOperator<BigDecimal> operator = (dec1, dec2) ->  dec1.add(dec2);
 		DemoFunctions.operator(operator, BigDecimal.valueOf(82), BigDecimal.valueOf(71));
+	
+		//IntBinaryOperator
+		//LongBinaryOperator
+		//DoubleBinaryOperator
+		
 	}
 	
 	private static void tryInterfaceSupplier() {

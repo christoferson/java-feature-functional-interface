@@ -13,6 +13,7 @@ import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.IntToDoubleFunction;
 import java.util.function.IntToLongFunction;
+import java.util.function.IntUnaryOperator;
 import java.util.function.LongFunction;
 import java.util.function.LongToDoubleFunction;
 import java.util.function.LongToIntFunction;
@@ -107,7 +108,11 @@ public class DemoFunctions {
 	public static void operator(UnaryOperator<BigDecimal> operator, BigDecimal num) {
 		System.out.println(operator.apply(num));
 	}
-
+	
+	public static void operator(IntUnaryOperator operator, int num) {
+		System.out.println(operator.applyAsInt(num));
+	}
+	
 	public static void operator(BinaryOperator<BigDecimal> operator, BigDecimal num1, BigDecimal num2) {
 		System.out.println(operator.apply(num1, num2));
 	}
