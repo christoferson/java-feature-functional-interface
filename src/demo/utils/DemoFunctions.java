@@ -17,6 +17,7 @@ import java.util.function.IntUnaryOperator;
 import java.util.function.LongFunction;
 import java.util.function.LongToDoubleFunction;
 import java.util.function.LongToIntFunction;
+import java.util.function.LongUnaryOperator;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.ToDoubleBiFunction;
@@ -111,6 +112,10 @@ public class DemoFunctions {
 	
 	public static void operator(IntUnaryOperator operator, int num) {
 		System.out.println(operator.applyAsInt(num));
+	}
+
+	public static void operator(LongUnaryOperator operator, long num) {
+		System.out.println(operator.applyAsLong(num));
 	}
 	
 	public static void operator(BinaryOperator<BigDecimal> operator, BigDecimal num1, BigDecimal num2) {
