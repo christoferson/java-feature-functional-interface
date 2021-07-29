@@ -11,6 +11,7 @@ import java.util.function.DoubleToIntFunction;
 import java.util.function.DoubleToLongFunction;
 import java.util.function.DoubleUnaryOperator;
 import java.util.function.Function;
+import java.util.function.IntBinaryOperator;
 import java.util.function.IntFunction;
 import java.util.function.IntToDoubleFunction;
 import java.util.function.IntToLongFunction;
@@ -126,6 +127,11 @@ public class DemoFunctions {
 	
 	public static <T> void BinaryOperator(BinaryOperator<T> operator, T num1, T num2) {
 		T result = operator.apply(num1, num2);
+		System.out.println(result);
+	}
+
+	public static <T> void BinaryOperator(IntBinaryOperator operator, int num1, int num2) {
+		int result = operator.applyAsInt(num1, num2);
 		System.out.println(result);
 	}
 	

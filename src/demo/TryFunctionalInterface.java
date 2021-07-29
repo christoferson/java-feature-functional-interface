@@ -15,6 +15,7 @@ import java.util.function.DoubleToIntFunction;
 import java.util.function.DoubleToLongFunction;
 import java.util.function.DoubleUnaryOperator;
 import java.util.function.Function;
+import java.util.function.IntBinaryOperator;
 import java.util.function.IntConsumer;
 import java.util.function.IntFunction;
 import java.util.function.IntPredicate;
@@ -286,7 +287,10 @@ public class TryFunctionalInterface {
 		BinaryOperator<BigDecimal> operator = (dec1, dec2) ->  dec1.add(dec2);
 		DemoFunctions.BinaryOperator(operator, BigDecimal.valueOf(82), BigDecimal.valueOf(71));
 	
-		//IntBinaryOperator
+		//IntBinaryOperator | int applyAsInt(int left, int right);
+		IntBinaryOperator ioperator = (i1, i2) ->  i1 + i2;
+		DemoFunctions.BinaryOperator(ioperator, 23, 33);
+		
 		//LongBinaryOperator
 		//DoubleBinaryOperator
 		
