@@ -7,6 +7,7 @@ import java.util.function.BiPredicate;
 import java.util.function.BinaryOperator;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
+import java.util.function.DoubleBinaryOperator;
 import java.util.function.DoubleConsumer;
 import java.util.function.DoubleFunction;
 import java.util.function.DoublePredicate;
@@ -298,7 +299,9 @@ public class TryFunctionalInterface {
 		LongBinaryOperator loperator = (i1, i2) ->  i1 - i2;
 		DemoFunctions.BinaryOperator(loperator, 23, 33);
 		
-		//DoubleBinaryOperator
+		//DoubleBinaryOperator | double applyAsDouble(double left, double right);
+		DoubleBinaryOperator doperator = (d1, d2) ->  d1 - d2;
+		DemoFunctions.BinaryOperator(doperator, 23, 33);
 		
 	}
 	
@@ -310,7 +313,7 @@ public class TryFunctionalInterface {
 		DemoFunctions.supplier(supplier);
 
 		Supplier<DemoClass> classSupplier = DemoClass::new;
-		System.out.println(classSupplier.get());
+		DemoFunctions.supplier(classSupplier);
 	}
 	
 	private static void tryInterfaceSupplierOthers() {

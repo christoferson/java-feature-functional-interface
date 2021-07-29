@@ -6,6 +6,7 @@ import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
+import java.util.function.DoubleBinaryOperator;
 import java.util.function.DoubleFunction;
 import java.util.function.DoubleToIntFunction;
 import java.util.function.DoubleToLongFunction;
@@ -140,9 +141,15 @@ public class DemoFunctions {
 		long result = operator.applyAsLong(num1, num2);
 		System.out.println(result);
 	}
-
-	public static void supplier(Supplier<BigDecimal> supplier) {
-		System.out.println(supplier.get());
+	
+	public static void BinaryOperator(DoubleBinaryOperator operator, double num1, double num2) {
+		double result = operator.applyAsDouble(num1, num2);
+		System.out.println(result);
+	}
+	
+	public static <T> void supplier(Supplier<T> supplier) {
+		T result = supplier.get();
+		System.out.println(result);
 	}
 	
 	public static void consumer(Consumer<String> consumer, String value) {
