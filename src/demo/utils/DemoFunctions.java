@@ -16,6 +16,7 @@ import java.util.function.IntFunction;
 import java.util.function.IntToDoubleFunction;
 import java.util.function.IntToLongFunction;
 import java.util.function.IntUnaryOperator;
+import java.util.function.LongBinaryOperator;
 import java.util.function.LongFunction;
 import java.util.function.LongToDoubleFunction;
 import java.util.function.LongToIntFunction;
@@ -135,6 +136,11 @@ public class DemoFunctions {
 		System.out.println(result);
 	}
 	
+	public static <T> void BinaryOperator(LongBinaryOperator operator, long num1, long num2) {
+		long result = operator.applyAsLong(num1, num2);
+		System.out.println(result);
+	}
+
 	public static void supplier(Supplier<BigDecimal> supplier) {
 		System.out.println(supplier.get());
 	}
