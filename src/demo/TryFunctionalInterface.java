@@ -165,13 +165,14 @@ public class TryFunctionalInterface {
 		IntFunction<String> function = num -> String.format("[%s]", num);
 		DemoFunctions.functions(function, 78);
 		
-		// int to long
+		// int to long | long applyAsLong(int value);
 		IntToLongFunction i2lfunction = num -> Long.valueOf(num);
 		DemoFunctions.functions(i2lfunction, 56);
 		
-		// int to double
+		// int to double | double applyAsDouble(int value);
 		IntToDoubleFunction i2dfunction = num -> Double.valueOf(num+0.75);
 		DemoFunctions.functions(i2dfunction, 56);
+
 	}
 	
 	private static void tryInterfaceLongFunction() {
@@ -214,17 +215,21 @@ public class TryFunctionalInterface {
 		
 		System.out.println("******* TryInterfaceToIntFunction *******");
 		
+		// ToIntFunction<T> | int applyAsInt(T value);
 		ToIntFunction<String> function = str -> Integer.valueOf(str) + 2;
 		DemoFunctions.functions(function, "78");
+
 	}
 	
 	private static void tryInterfaceToFunctionOthers() {
 		
 		System.out.println("******* TryInterfaceToFunctionOthers *******");
 		
+		// ToLongFunction<T> | long applyAsLong(T value);
 		ToLongFunction<String> lfunction = num -> Long.valueOf(num);
-		DemoFunctions.functions(lfunction, "78");
+		DemoFunctions.functions(lfunction, "356");
 		
+		// ToDoubleFunction<T> | double applyAsDouble(T value);
 		ToDoubleFunction<String> dfunction = num -> Double.valueOf(num);
 		DemoFunctions.functions(dfunction, "78.56");
 		
@@ -234,6 +239,7 @@ public class TryFunctionalInterface {
 		
 		System.out.println("******* TryInterfaceBiFunction *******");
 		
+		// BiFunction<T, U, R> | R apply(T t, U u);
 		BiFunction<Integer, Integer, Long> function = (in1, in2) ->  Long.valueOf(in1 * in2);
 		DemoFunctions.functions(function, 21, 17);
 	}

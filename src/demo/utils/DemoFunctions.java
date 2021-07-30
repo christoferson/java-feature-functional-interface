@@ -1,6 +1,5 @@
 package demo.utils;
 
-import java.math.BigDecimal;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
@@ -34,7 +33,7 @@ import java.util.function.UnaryOperator;
 
 public class DemoFunctions {
 
-	public static void predicate(Predicate<String> predicate, String target) {
+	public static <T> void predicate(Predicate<T> predicate, T target) {
 		System.out.println(predicate.test(target));
 	}
 	 
@@ -94,8 +93,9 @@ public class DemoFunctions {
 		System.out.println(function.applyAsDouble(in));
 	}	
 	
-	public static void functions(BiFunction<Integer, Integer, Long> function, Integer in1, Integer in2) {
-		System.out.println(function.apply(in1, in2));
+	public static <T, U, R> void functions(BiFunction<T, U, R> function, T in1, U in2) {
+		R result = function.apply(in1, in2);
+		System.out.println(result);
 	}
 
 	public static void functions(ToIntBiFunction<Integer, Integer> function, Integer in1, Integer in2) {
