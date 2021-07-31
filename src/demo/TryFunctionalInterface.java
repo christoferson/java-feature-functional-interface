@@ -179,7 +179,7 @@ public class TryFunctionalInterface {
 		
 		System.out.println("******* TryInterfaceLongFunction *******");
 		
-		// long to Object
+		// long to Object | LongFunction<R> | R apply(long value);
 		LongFunction<String> function = num -> String.format("[%s]", num);
 		DemoFunctions.functions(function, 373902);
 		

@@ -61,8 +61,9 @@ public class DemoFunctions {
 		System.out.println(function.applyAsInt(in));
 	}
 	
-	public static void functions(LongFunction<String> function, long in) {
-		System.out.println(function.apply(in));
+	public static <T> void functions(LongFunction<T> function, long in) {
+		T result = function.apply(in);
+		System.out.println(result);
 	}
 
 	public static void functions(LongToIntFunction function, long in) {
