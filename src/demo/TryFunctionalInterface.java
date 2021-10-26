@@ -1,6 +1,7 @@
 package demo;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
@@ -44,6 +45,7 @@ import java.util.function.ToIntFunction;
 import java.util.function.ToLongBiFunction;
 import java.util.function.ToLongFunction;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 import demo.interfaces.DemoFunctionalInterface;
 import demo.model.DemoClass;
@@ -52,6 +54,8 @@ import demo.utils.DemoFunctions;
 public class TryFunctionalInterface {
 
 	public static void main(String[] args) {
+		
+		tryFunctionalInterfacePreview();
 		
 		tryInterfacePredicate(); // Predicate<T> | boolean test(T t);
 		
@@ -97,6 +101,17 @@ public class TryFunctionalInterface {
 		
 		tryInterfaceCustom();
 
+	}
+	private static void tryFunctionalInterfacePreview() {
+			
+		System.out.println("******* TryFunctionalInterfacePreview *******");
+		
+		// Assignment context
+		Predicate<String> p = String::isEmpty; System.out.println(p.test("02932"));
+		
+		// Method invocation context
+		long count = List.of("e334", "", "334").stream().filter(s -> !s.isEmpty()).collect(Collectors.counting());
+		System.out.println(count);
 	}
 	
 	
@@ -183,7 +198,7 @@ public class TryFunctionalInterface {
 		LongFunction<String> function = num -> String.format("[%s]", num);
 		DemoFunctions.functions(function, 373902);
 		
-		// long to int
+		// long to int | int applyAsInt(long value);
 		LongToIntFunction l2ifunction = num -> Long.valueOf(num).intValue();
 		DemoFunctions.functions(l2ifunction, 535l);
 		
